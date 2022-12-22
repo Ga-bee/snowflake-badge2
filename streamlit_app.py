@@ -53,7 +53,7 @@ streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
-
-my_cur.execute(f"insert into fruit_load_list ({add_my_fuit})")
-my_cur.fetchall()
+cur = my_cnx.cursor()
+cur.execute(f"insert into fruit_load_list ({add_my_fuit})")
+my_data_rows = cur.fetchall()
 streamlit.text(f'Thanks for adding {add_my_fruit} ')
